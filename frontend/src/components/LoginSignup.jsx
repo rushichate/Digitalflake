@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
+import "./LoginSignup.css"
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Nav from './Nav'
 
 function LoginSignup() {
     const [email, setEmail] = useState("")
@@ -37,7 +39,12 @@ function LoginSignup() {
         }
     }
   return (
-    <div>
+
+    <>
+     <Nav/>
+    
+    <div className='log'>
+       
         <h2>{isLogin ? 'Login' : 'Signup'}</h2>
         <form onSubmit={handleSubmit}>
         {
@@ -63,6 +70,7 @@ function LoginSignup() {
             <Link onClick={()=> setIsLogin(!isLogin)}>{isLogin ? "Signup" : "Login"}</Link>
         </p>
     </div>
+    </>
   )
 }
 

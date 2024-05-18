@@ -3,6 +3,7 @@ const app = express()
 const cors = require("cors")
 const { connection } = require("./database")
 const { adminRouter } = require("./backend/routes/admin.route")
+const { itemRouter } = require("./backend/routes/items.route")
 require("dotenv").config()
 
 
@@ -14,7 +15,7 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/admin",adminRouter)
-
+app.use("/items",itemRouter)
 
 app.listen(process.env.port,async()=>{
     try{

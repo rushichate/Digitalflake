@@ -36,15 +36,15 @@ adminRouter.post("/login",async(req,res)=>{
      }
 })
 
-adminRouter.get("/",async(req,res)=>{
-    try{
-        const data = await AdminModel.find()
-        res.status(201).json(data)
+// adminRouter.get("/",async(req,res)=>{
+//     try{
+//         const data = await AdminModel.find()
+//         res.status(201).json(data)
 
-    }catch(error){
-        res.status(400).json({message:error})
-     }
-})
+//     }catch(error){
+//         res.status(400).json({message:error})
+//      }
+// })
 
 
 

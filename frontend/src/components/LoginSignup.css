@@ -1,0 +1,27 @@
+
+.log input{
+    display: block;
+    margin: 10px;
+    height: 20px;
+    border-radius: 15px;
+    padding-left: 15px;
+}
+
+.log label{
+    margin: 10px;
+}
+
+.log{
+    margin: 20px;
+    border: solid black;
+    padding: 20px;
+    width: 25%;
+    border-radius: 15px;
+    background-color: #E0E0E0;
+}
+
+.log button{
+    width: 100px;
+    background-color: aqua;
+    margin-left: 10px;
+}
