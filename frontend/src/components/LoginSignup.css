@@ -1,27 +1,90 @@
-
-.log input{
-    display: block;
-    margin: 10px;
-    height: 20px;
-    border-radius: 15px;
-    padding-left: 15px;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
 
-.log label{
-    margin: 10px;
+.log-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
 }
 
-.log{
-    margin: 20px;
-    border: solid black;
+.log {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
-    width: 25%;
     border-radius: 15px;
-    background-color: #E0E0E0;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
 }
 
-.log button{
-    width: 100px;
-    background-color: aqua;
-    margin-left: 10px;
+.log h2 {
+    margin-bottom: 20px;
+}
+
+.log form {
+    width: 100%;
+}
+
+.log label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.log input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.log button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.log button:hover {
+    background-color: #0056b3;
+}
+
+.log p {
+    margin-top: 15px;
+}
+
+.log p a {
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.log p a:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    .log {
+        padding: 40px;
+    }
+
+    .log h2 {
+        margin-bottom: 30px;
+    }
+
+    .log button {
+        font-size: 18px;
+    }
 }

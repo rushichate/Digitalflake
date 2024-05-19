@@ -6,16 +6,18 @@ const Nav = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    
     localStorage.removeItem('token');
-
     navigate('/');
   };
 
   return (
-    <nav id='nav'>
-      <h1>digital<span>flake</span></h1>
-      <button onClick={handleLogout}>LogOut</button>
+    <nav className="navbar">
+      <h1 className="logo">
+        digital<span>flake</span>
+      </h1>
+      <button onClick={handleLogout} className="logout-button">
+        LogOut
+      </button>
     </nav>
   );
 }

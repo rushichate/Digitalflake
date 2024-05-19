@@ -50,8 +50,8 @@ function Warehouse() {
   };
 
   return (
-    <div className='data'>
-      <div className='search'>
+    <div className='warehouse-container'>
+      <div className='search-bar'>
         <h2>Products</h2>
         <input type="text" placeholder='Search'/>
         {!isFormVisible && <button onClick={handleAddNew}>Add New</button>}
@@ -64,32 +64,30 @@ function Warehouse() {
       ) : (
         <>
           <h2>Item List</h2>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <table>
             <thead>
               <tr>
-                <th style={{ border: '1px solid #ddd', padding: '8px' }}>Id</th>
-                <th style={{ border: '1px solid #ddd', padding: '8px' }}>Product name</th>
-                <th style={{ border: '1px solid #ddd', padding: '8px' }}>Image</th>
-                <th style={{ border: '1px solid #ddd', padding: '8px' }}>Subcategory</th>
-                <th style={{ border: '1px solid #ddd', padding: '8px' }}>Category</th>
-                <th style={{ border: '1px solid #ddd', padding: '8px' }}>Status</th>
-                <th style={{ border: '1px solid #ddd', padding: '8px' }}>Actions</th>
+                <th>Id</th>
+                <th>Product name</th>
+                <th>Image</th>
+                <th>Subcategory</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               {items.map((item) => (
                 <tr key={item._id}>
-                  <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item._id}</td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.productName}</td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-                    {item.imageUrl && <img src={item.imageUrl} alt="Item" style={{ maxWidth: '100px', maxHeight: '100px' }} />}
-                  </td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.subCategory}</td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.categoryName}</td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.status}</td>
-                  <td style={{ width: "30%", border: '1px solid #ddd', padding: '8px', margin: "auto" }}>
-                    <button style={{ width: "40%", marginRight: '10px' }} onClick={() => handleEdit(item)}>Edit</button>
-                    <button style={{ width: "40%" }} onClick={() => handleDelete(item._id)}>Delete</button>
+                  <td>{item._id}</td>
+                  <td>{item.productName}</td>
+                  <td>{item.imageUrl && <img src={item.imageUrl} alt="Item" />}</td>
+                  <td>{item.subCategory}</td>
+                  <td>{item.categoryName}</td>
+                  <td>{item.status}</td>
+                  <td>
+                    <button className="edit-button" onClick={() => handleEdit(item)}>Edit</button>
+                    <button className="delete-button" onClick={() => handleDelete(item._id)}>Delete</button>
                   </td>
                 </tr>
               ))}

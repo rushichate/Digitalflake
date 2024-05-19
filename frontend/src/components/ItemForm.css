@@ -1,17 +1,73 @@
-form label{
-    display: block;
-}
-
-form input{
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .item-form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
     border-radius: 15px;
-    height: 20px;
-    padding-left: 15px;
-}
-
-#add {
-    display: block;
-    margin-top: 10px;
-    width: 150px;
-    background-color: greenyellow;
-}
-
+    background-color: #f5f5f5;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .item-form label {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .item-form input,
+  .item-form select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  .submit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+    margin-top: 20px;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .item-form {
+      padding: 15px;
+    }
+  
+    .item-form label {
+      font-size: 14px;
+    }
+  
+    .item-form input,
+    .item-form select {
+      font-size: 14px;
+      padding: 8px;
+    }
+  
+    .submit-button {
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+  }
+  

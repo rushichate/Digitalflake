@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axiosInstance from './axiosInstance';
+import './ItemForm.css';
 
 function ItemForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
   const [formData, setFormData] = useState({
@@ -77,7 +78,7 @@ function ItemForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="item-form">
       <label>
         Product Name:
         <input type="text" name="productName" value={formData.productName} onChange={handleChange} />
@@ -116,7 +117,7 @@ function ItemForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
           <option value="inactive">Inactive</option>
         </select>
       </label>
-      <button type="submit">Submit</button>
+      <button type="submit" className="submit-button">Submit</button>
     </form>
   );
 }

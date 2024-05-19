@@ -45,8 +45,8 @@ function CategoryForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-       <label>
+    <form onSubmit={handleSubmit} className="item-form">
+      <label>
         Category:
         <input type="text" name="categoryName" value={formData.categoryName} onChange={handleChange} />
       </label>
@@ -62,9 +62,11 @@ function CategoryForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
           <option value="inactive">Inactive</option>
         </select>
       </label>
-      <button type="submit">Submit</button>
+      <button type="submit" className="submit-button">Submit</button>
     </form>
   );
 }
 
 export default CategoryForm;
+
+

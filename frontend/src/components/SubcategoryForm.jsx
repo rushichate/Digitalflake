@@ -63,37 +63,39 @@ function SubcategoryForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form onSubmit={handleSubmit} className="item-form">
+   <label>
         Subcategory:
         <input type="text" name="subCategory" value={formData.subCategory} onChange={handleChange} />
       </label>
-      <label>
-        Category:
-        <select name="categoryName" value={formData.categoryName} onChange={handleChange}>
-          <option>Select</option>
-          {categories.map((category) => (
-            <option key={category._id} value={category.categoryName}>
-              {category.categoryName}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label>
-        Image URL:
-        <input type="text" name="imageUrl" value={formData.imageUrl} onChange={handleChange} />
-      </label>
-      <label>
-        Status:
-        <select name="status" value={formData.status} onChange={handleChange}>
-          <option>Select</option>
-          <option value="active">Active</option>
-          <option value="inactive">Inactive</option>
-        </select>
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <label>
+      Image URL:
+      <input type="text" name="imageUrl" value={formData.imageUrl} onChange={handleChange} />
+    </label>
+    <label>
+      Category:
+      <select name="categoryName" value={formData.categoryName} onChange={handleChange}>
+        <option>Select</option>
+        {categories.map((category) => (
+          <option key={category._id} value={category.categoryName}>
+            {category.categoryName}
+          </option>
+        ))}
+      </select>
+    </label>
+    <label>
+      Status:
+      <select name="status" value={formData.status} onChange={handleChange}>
+        <option>Select</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
+    </label>
+    <button type="submit" className="submit-button">Submit</button>
+  </form>
   );
 }
 
 export default SubcategoryForm;
+
+

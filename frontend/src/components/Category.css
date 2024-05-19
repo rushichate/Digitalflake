@@ -1,28 +1,88 @@
-
-
-.home{
-    padding-left: 50px;
-    width: 25%;
-    padding: 15px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    margin: 20px;
-    height: 500px;
-    border-radius: 15px;
-}
-
-.home h2:hover {
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 15px;
-    padding-left: 10px;
-}
-
-.main{
+.data {
+    margin-left: 30px;
+  }
+  
+  .search {
     display: flex;
-    justify-content: space-around;
-}
-
-.main img{
-    width: 50%;
-    height: 550px;
-}
+    margin: 15px;
+  }
+  
+  .search input {
+    height: 25px;
+    margin-top: 25px;
+    width: 250px;
+    border-radius: 15px;
+    padding-left: 15px;
+  }
+  
+  .search button {
+    width: 90px;
+    margin-top: 22px;
+    color: white;
+    background-color: blue;
+  }
+  
+  .form-container button {
+    width: 150px;
+    margin: 10px;
+    background-color: red;
+  }
+  
+  table button:first-child {
+    background-color: yellow;
+  }
+  
+  table button:last-child {
+    background-color: red;
+  }
+  
+  /* Enhanced styles for the item list */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .actions {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .actions button {
+    width: 40%;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .search input {
+      width: 200px;
+    }
+  
+    .search button {
+      width: 70px;
+    }
+  
+    .form-container button {
+      width: 120px;
+    }
+  
+    .actions button {
+      width: 30%;
+    }
+  }
+  
