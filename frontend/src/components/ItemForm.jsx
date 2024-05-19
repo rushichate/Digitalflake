@@ -1,90 +1,96 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from './axiosInstance';
+import "./ItemForm.css"
 
 function ItemForm({ fetchItems, itemToEdit, setItemToEdit }) {
   const [productName, setProductName] = useState('');
-  const [categoryName, setCategoryName] = useState('');
-  const [subCategory, setSubCategory] = useState('');
-  const [status, setStatus] = useState('Valid');
   const [imageUrl, setImageUrl] = useState('');
+  const [subCategory, setSubCategory] = useState('');
+  const [categoryName, setCategoryName] = useState('');
+  const [status, setStatus] = useState('');
 
   useEffect(() => {
     if (itemToEdit) {
       setProductName(itemToEdit.productName);
-      setCategoryName(itemToEdit.categoryName);
-      setSubCategory(itemToEdit.subCategory);
-      setStatus(itemToEdit.status);
       setImageUrl(itemToEdit.imageUrl);
+      setSubCategory(itemToEdit.subCategory);
+      setCategoryName(itemToEdit.categoryName);
+      setStatus(itemToEdit.status);
     }
   }, [itemToEdit]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const newItem = {
-      productName,
-      categoryName,
-      subCategory,
-      status,
-      imageUrl,
-    };
-
     try {
       if (itemToEdit) {
-        await axios.put(`http://localhost:8000/items/${itemToEdit._id}`, newItem);
+        // Update item
+        await axiosInstance.put(`/items/${itemToEdit._id}`, {
+          productName,
+          imageUrl,
+          subCategory,
+          categoryName,
+          status,
+        });
       } else {
-        await axios.post('http://localhost:8000/items/add', newItem);
+        // Add new item
+        await axiosInstance.post('/items/add', {
+          productName,
+          imageUrl,
+          subCategory,
+          categoryName,
+          status,
+        });
       }
       fetchItems();
-      clearForm();
+      setItemToEdit(null);
     } catch (error) {
       console.error('Error:', error);
     }
   };
 
-  const clearForm = () => {
-    setProductName('');
-    setCategoryName('');
-    setSubCategory('');
-    setStatus('Valid');
-    setImageUrl('');
-    setItemToEdit(null);
-  };
-
   return (
     <form onSubmit={handleSubmit}>
+      <label htmlFor="productName">Product Name:</label>
       <input
         type="text"
-        placeholder="Product Name"
+        id="productName"
         value={productName}
         onChange={(e) => setProductName(e.target.value)}
         required
       />
+      <label htmlFor="imageUrl">Image URL:</label>
       <input
         type="text"
-        placeholder="Category Name"
-        value={categoryName}
-        onChange={(e) => setCategoryName(e.target.value)}
+        id="imageUrl"
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
         required
       />
+      <label htmlFor="subCategory">Subcategory:</label>
       <input
         type="text"
-        placeholder="Subcategory"
+        id="subCategory"
         value={subCategory}
         onChange={(e) => setSubCategory(e.target.value)}
         required
       />
-      <select value={status} onChange={(e) => setStatus(e.target.value)} required>
-        <option value="active">Active</option>
-        <option value="inactive">Inactive</option>
-      </select>
+      <label htmlFor="categoryName">Category:</label>
       <input
         type="text"
-        placeholder="Image URL"
-        value={imageUrl}
-        onChange={(e) => setImageUrl(e.target.value)}
+        id="categoryName"
+        value={categoryName}
+        onChange={(e) => setCategoryName(e.target.value)}
+        required
       />
-      <button type="submit">{itemToEdit ? 'Update Item' : 'Add Item'}</button>
+      <label htmlFor="status">Status (active,inactive):</label>
+      <input
+        type="text"
+        id="status"
+        value={status}
+        onChange={(e) => setStatus(e.target.value)}
+        required
+      />
+      <button id='add' type="submit">{itemToEdit ? 'Update Item' : 'Add Item'}</button>
     </form>
   );
 }

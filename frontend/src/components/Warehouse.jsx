@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from './axiosInstance'; // Import the axios instance
 import './Warehouse.css';
 import Nav from './Nav';
 import ItemForm from './ItemForm';
@@ -15,7 +15,7 @@ function Warehouse() {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/items/');
+      const response = await axiosInstance.get('/items/');
       setItems(response.data);
     } catch (error) {
       console.error('Error:', error);
@@ -24,7 +24,7 @@ function Warehouse() {
 
   const handleDelete = async (itemId) => {
     try {
-      await axios.delete(`http://localhost:8000/items/${itemId}`);
+      await axiosInstance.delete(`/items/${itemId}`);
       fetchItems();
     } catch (error) {
       console.error('Error:', error);
