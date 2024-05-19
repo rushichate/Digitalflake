@@ -1,5 +1,9 @@
 # Digitalflake
 
+This is a full-stack application developed as part of the DigiFlake Hackathon. In this application, users are required to register and log in since all routes are protected, allowing only authenticated and authorized users to perform tasks. The application includes pages for managing categories, subcategories, and products.
+
+On these pages, users can view existing items, add new items, edit existing items, and delete items specific to each page. The application ensures that only authorized users can access and modify data, enhancing security and user control.
+
 Login page
 
 ![Login page](/img/login.png)
