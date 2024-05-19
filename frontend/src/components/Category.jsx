@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axiosInstance from './axiosInstance'; // Import the axios instance
-import './Warehouse.css';
-import ItemForm from './ItemForm';
+import './Category.css';
+import CategoryForm from './CategoryForm';
 
-function Warehouse() {
+function Category() {
   const [items, setItems] = useState([]);
   const [itemToEdit, setItemToEdit] = useState(null);
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -14,7 +14,7 @@ function Warehouse() {
 
   const fetchItems = async () => {
     try {
-      const response = await axiosInstance.get('/items/');
+      const response = await axiosInstance.get('/category/');
       setItems(response.data);
     } catch (error) {
       console.error('Error:', error);
@@ -23,7 +23,7 @@ function Warehouse() {
 
   const handleDelete = async (itemId) => {
     try {
-      await axiosInstance.delete(`/items/${itemId}`);
+      await axiosInstance.delete(`/category/${itemId}`);
       fetchItems();
     } catch (error) {
       console.error('Error:', error);
@@ -52,13 +52,13 @@ function Warehouse() {
   return (
     <div className='data'>
       <div className='search'>
-        <h2>Products</h2>
+        <h2>Category</h2>
         <input type="text" placeholder='Search'/>
         {!isFormVisible && <button onClick={handleAddNew}>Add New</button>}
       </div>
       {isFormVisible ? (
         <div className='form-container'>
-          <ItemForm fetchItems={fetchItems} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit} onSubmit={handleFormSubmit} />
+          <CategoryForm fetchItems={fetchItems} itemToEdit={itemToEdit} setItemToEdit={setItemToEdit} onSubmit={handleFormSubmit} />
           <button onClick={handleCloseForm}>Close Form</button>
         </div>
       ) : (
@@ -68,10 +68,8 @@ function Warehouse() {
             <thead>
               <tr>
                 <th style={{ border: '1px solid #ddd', padding: '8px' }}>Id</th>
-                <th style={{ border: '1px solid #ddd', padding: '8px' }}>Product name</th>
-                <th style={{ border: '1px solid #ddd', padding: '8px' }}>Image</th>
-                <th style={{ border: '1px solid #ddd', padding: '8px' }}>Subcategory</th>
                 <th style={{ border: '1px solid #ddd', padding: '8px' }}>Category</th>
+                <th style={{ border: '1px solid #ddd', padding: '8px' }}>Image</th>
                 <th style={{ border: '1px solid #ddd', padding: '8px' }}>Status</th>
                 <th style={{ border: '1px solid #ddd', padding: '8px' }}>Actions</th>
               </tr>
@@ -80,12 +78,10 @@ function Warehouse() {
               {items.map((item) => (
                 <tr key={item._id}>
                   <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item._id}</td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.productName}</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.categoryName}</td>
                   <td style={{ border: '1px solid #ddd', padding: '8px' }}>
                     {item.imageUrl && <img src={item.imageUrl} alt="Item" style={{ maxWidth: '100px', maxHeight: '100px' }} />}
                   </td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.subCategory}</td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.categoryName}</td>
                   <td style={{ border: '1px solid #ddd', padding: '8px' }}>{item.status}</td>
                   <td style={{ width: "30%", border: '1px solid #ddd', padding: '8px', margin: "auto" }}>
                     <button style={{ width: "40%", marginRight: '10px' }} onClick={() => handleEdit(item)}>Edit</button>
@@ -101,4 +97,4 @@ function Warehouse() {
   );
 }
 
-export default Warehouse;
+export default Category;

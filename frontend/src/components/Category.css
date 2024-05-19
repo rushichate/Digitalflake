@@ -1,0 +1,28 @@
+
+
+.home{
+    padding-left: 50px;
+    width: 25%;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: 20px;
+    height: 500px;
+    border-radius: 15px;
+}
+
+.home h2:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 15px;
+    padding-left: 10px;
+}
+
+.main{
+    display: flex;
+    justify-content: space-around;
+}
+
+.main img{
+    width: 50%;
+    height: 550px;
+}

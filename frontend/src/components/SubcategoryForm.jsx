@@ -1,33 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import axiosInstance from './axiosInstance';
 
-function ItemForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
+function SubcategoryForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
   const [formData, setFormData] = useState({
-    productName: '',
-    imageUrl: '',
     subCategory: '',
     categoryName: '',
+    imageUrl: '',
     status: '',
   });
 
   const [categories, setCategories] = useState([]);
-  const [subCategories, setSubCategories] = useState([]);
 
   useEffect(() => {
     if (itemToEdit) {
       setFormData({
-        productName: itemToEdit.productName,
-        imageUrl: itemToEdit.imageUrl,
         subCategory: itemToEdit.subCategory,
         categoryName: itemToEdit.categoryName,
+        imageUrl: itemToEdit.imageUrl,
         status: itemToEdit.status,
       });
     } else {
       setFormData({
-        productName: '',
-        imageUrl: '',
         subCategory: '',
         categoryName: '',
+        imageUrl: '',
         status: '',
       });
     }
@@ -35,7 +31,6 @@ function ItemForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
 
   useEffect(() => {
     fetchCategories();
-    fetchSubCategories();
   }, []);
 
   const fetchCategories = async () => {
@@ -47,15 +42,6 @@ function ItemForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
     }
   };
 
-  const fetchSubCategories = async () => {
-    try {
-      const response = await axiosInstance.get('/subcategory/');
-      setSubCategories(response.data);
-    } catch (error) {
-      console.error('Error fetching subcategories:', error);
-    }
-  };
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -64,9 +50,9 @@ function ItemForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
     e.preventDefault();
     try {
       if (itemToEdit) {
-        await axiosInstance.put(`/items/${itemToEdit._id}`, formData);
+        await axiosInstance.put(`/subcategory/${itemToEdit._id}`, formData);
       } else {
-        await axiosInstance.post('/items/add', formData);
+        await axiosInstance.post('/subcategory/add', formData);
       }
       fetchItems();
       setItemToEdit(null);
@@ -79,12 +65,8 @@ function ItemForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Product Name:
-        <input type="text" name="productName" value={formData.productName} onChange={handleChange} />
-      </label>
-      <label>
-        Image URL:
-        <input type="text" name="imageUrl" value={formData.imageUrl} onChange={handleChange} />
+        Subcategory:
+        <input type="text" name="subCategory" value={formData.subCategory} onChange={handleChange} />
       </label>
       <label>
         Category:
@@ -98,15 +80,8 @@ function ItemForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
         </select>
       </label>
       <label>
-        Subcategory:
-        <select name="subCategory" value={formData.subCategory} onChange={handleChange}>
-          <option>Select</option>
-          {subCategories.map((subCategory) => (
-            <option key={subCategory._id} value={subCategory.subCategory}>
-              {subCategory.subCategory}
-            </option>
-          ))}
-        </select>
+        Image URL:
+        <input type="text" name="imageUrl" value={formData.imageUrl} onChange={handleChange} />
       </label>
       <label>
         Status:
@@ -121,4 +96,4 @@ function ItemForm({ fetchItems, itemToEdit, setItemToEdit, onSubmit }) {
   );
 }
 
-export default ItemForm;
+export default SubcategoryForm;

@@ -4,6 +4,8 @@ const cors = require("cors")
 const { connection } = require("./database")
 const { adminRouter } = require("./backend/routes/admin.route")
 const { itemRouter } = require("./backend/routes/items.route")
+const { categoryRouter } = require("./backend/routes/category.route")
+const { subCategoryRouter } = require("./backend/routes/subcategory.route")
 require("dotenv").config()
 
 
@@ -15,6 +17,8 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/admin",adminRouter)
+app.use("/category",categoryRouter)
+app.use("/subcategory",subCategoryRouter)
 app.use("/items",itemRouter)
 
 app.listen(process.env.port,async()=>{
